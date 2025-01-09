@@ -20,7 +20,7 @@ interface Menu {
 }
 
 const menus: Menu[] = [
-  { name: 'user', icon: 'mdi-account', url: '/user' },
-  { name: 'setting', icon: 'mdi-cog', url: '/setting' },
+  { name: 'User', icon: 'mdi-account', url: '/user' },
+  { name: 'Setting', icon: 'mdi-cog', url: '/setting' },
 ]
 </script>
