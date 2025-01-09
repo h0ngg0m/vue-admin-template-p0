@@ -1,8 +1,9 @@
 import axios, { type AxiosInstance, type AxiosResponse } from 'axios'
 import type { ApiResponse } from '@/type/common.ts'
+import { BASE_API_URL } from '@/constant/env.ts'
 
 const instance: AxiosInstance = axios.create({
-  baseURL: import.meta.env.VITE_API_URL,
+  baseURL: BASE_API_URL,
   headers: {
     'Content-Type': 'application/json;charset=UTF-8',
   },
