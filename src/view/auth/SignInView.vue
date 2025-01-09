@@ -7,19 +7,15 @@
         <v-text-field
           v-model.trim="loginId"
           variant="outlined"
-          class="pwdInput"
           hide-details
-          color="primary"
           @keydown.enter="signIn"
         ></v-text-field>
         <v-label class="mt-2">Password</v-label>
         <v-text-field
           v-model.trim="password"
           variant="outlined"
-          class="border-borderColor"
           type="password"
           hide-details
-          color="primary"
           @keydown.enter="signIn"
         ></v-text-field>
         <v-btn
