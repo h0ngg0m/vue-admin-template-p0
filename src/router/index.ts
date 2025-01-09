@@ -37,6 +37,17 @@ const router = createRouter({
       ],
     },
     {
+      path: '/setting',
+      component: () => import('@/layout/default/DefaultLayout.vue'),
+      children: [
+        {
+          name: 'Setting',
+          path: '/setting',
+          component: () => import('@/view/setting/SettingView.vue'),
+        },
+      ],
+    },
+    {
       path: '/:pathMatch(.*)*',
       component: () => import('@/view/error/Error404View.vue'),
     },
