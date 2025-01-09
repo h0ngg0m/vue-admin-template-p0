@@ -1,4 +1,5 @@
 import { createRouter, createWebHistory } from 'vue-router'
+import { useAdminStore } from '@/store/adminStore.ts'
 
 const router = createRouter({
   history: createWebHistory(),
@@ -54,16 +55,15 @@ const router = createRouter({
   ],
 })
 
-// TODO: 인증 처리
-// const PUBLIC_ROUTES = ['SignIn']
-//
-// router.beforeEach((to, from, next) => {
-//   const { isAuthenticated, isTokenExpired } = useAdminStore()
-//   if (PUBLIC_ROUTES.includes(to.name as string) || (isAuthenticated && !isTokenExpired())) {
-//     next()
-//   } else {
-//     next({ name: 'SignIn' })
-//   }
-// })
+const PUBLIC_ROUTES = ['SignIn']
+
+router.beforeEach((to, from, next) => {
+  const { isAuthenticated, isTokenExpired } = useAdminStore()
+  if (PUBLIC_ROUTES.includes(to.name as string) || (isAuthenticated && !isTokenExpired())) {
+    next()
+  } else {
+    next({ name: 'SignIn' })
+  }
+})
 
 export default router
