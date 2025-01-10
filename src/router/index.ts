@@ -55,15 +55,15 @@ const router = createRouter({
   ],
 })
 
-const PUBLIC_ROUTES = ['SignIn']
-
-router.beforeEach((to, from, next) => {
-  const { isAuthenticated, isTokenExpired } = useAdminStore()
-  if (PUBLIC_ROUTES.includes(to.name as string) || (isAuthenticated && !isTokenExpired())) {
-    next()
-  } else {
-    next({ name: 'SignIn' })
-  }
-})
+// const PUBLIC_ROUTES = ['SignIn']
+//
+// router.beforeEach((to, from, next) => {
+//   const { isAuthenticated, isTokenExpired } = useAdminStore()
+//   if (PUBLIC_ROUTES.includes(to.name as string) || (isAuthenticated && !isTokenExpired())) {
+//     next()
+//   } else {
+//     next({ name: 'SignIn' })
+//   }
+// })
 
 export default router
