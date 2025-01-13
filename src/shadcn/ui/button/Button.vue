@@ -8,6 +8,7 @@ interface Props extends PrimitiveProps {
   variant?: ButtonVariants['variant']
   size?: ButtonVariants['size']
   class?: HTMLAttributes['class']
+  disabled?: boolean
 }
 
 const props = withDefaults(defineProps<Props>(), {
@@ -18,6 +19,7 @@ const props = withDefaults(defineProps<Props>(), {
 <template>
   <Primitive
     :as="as"
+    :disabled="props.disabled"
     :as-child="asChild"
     :class="cn(buttonVariants({ variant, size }), props.class)"
   >

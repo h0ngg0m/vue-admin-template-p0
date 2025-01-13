@@ -1,38 +1,43 @@
 <template>
-  <div class="d-flex justify-center align-center fill-height">
-    <v-card width="500" elevation="4">
-      <v-card-title>Sign In</v-card-title>
-      <v-card-text>
-        <v-label class="mt-2">ID</v-label>
-        <v-text-field
-          v-model.trim="loginId"
-          variant="outlined"
-          hide-details
-          @keydown.enter="signIn"
-        ></v-text-field>
-        <v-label class="mt-2">Password</v-label>
-        <v-text-field
+  <Card class="w-full max-w-sm">
+    <CardHeader>
+      <CardTitle class="text-2xl"> Sign in </CardTitle>
+      <CardDescription> Enter your ID below to sign in to your account. </CardDescription>
+    </CardHeader>
+    <CardContent class="grid gap-4">
+      <div class="grid gap-2">
+        <Label for="email">Email</Label>
+        <Input v-model.trim="loginId" id="email" type="text" required @keydown.enter="signIn" />
+      </div>
+      <div class="grid gap-2">
+        <Label for="password">Password</Label>
+        <Input
           v-model.trim="password"
-          variant="outlined"
+          id="password"
           type="password"
-          hide-details
+          required
           @keydown.enter="signIn"
-        ></v-text-field>
-        <v-btn
-          class="w-100 mt-3"
-          color="primary"
-          :loading="signLoading"
-          :disabled="signInBtnDisabled"
-          @click="signIn"
-        >
-          Sign In
-        </v-btn>
-      </v-card-text>
-    </v-card>
-  </div>
+        />
+      </div>
+    </CardContent>
+    <CardFooter>
+      <Button class="w-full" :disabled="signInBtnDisabled" @click="signIn"> Sign in </Button>
+    </CardFooter>
+  </Card>
 </template>
 
 <script setup lang="ts">
+import { Button } from '@/shadcn/ui/button'
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardFooter,
+  CardHeader,
+  CardTitle,
+} from '@/shadcn/ui/card'
+import { Input } from '@/shadcn/ui/input'
+import { Label } from '@/shadcn/ui/label'
 import { computed, ref } from 'vue'
 import axios, { type AxiosResponse } from 'axios'
 import { BASE_API_URL } from '@/constant/env.ts'

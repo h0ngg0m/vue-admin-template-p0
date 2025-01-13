@@ -1,7 +1,7 @@
 <template>
-  <v-app>
+  <div class="flex justify-center items-center h-screen">
     <RouterView />
-  </v-app>
+  </div>
 </template>
 
 <script setup lang="ts">
