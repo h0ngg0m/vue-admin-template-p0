@@ -1,7 +1,7 @@
 <template>
   <SidebarMenu>
     <Collapsible
-      v-for="item in data.navMain"
+      v-for="item in menus"
       :key="item.title"
       as-child
       :default-open="item.isActive"
@@ -21,7 +21,7 @@
           <SidebarMenuSub>
             <SidebarMenuSubItem v-for="subItem in item.items" :key="subItem.title">
               <SidebarMenuSubButton as-child>
-                <a :href="subItem.url">
+                <a @click="router.push(subItem.url)">
                   <span>{{ subItem.title }}</span>
                 </a>
               </SidebarMenuSubButton>
@@ -41,46 +41,40 @@ import {
   SidebarMenuSub,
   SidebarMenuSubButton,
   SidebarMenuSubItem,
-} from '@/component/ui/sidebar'
-import { Collapsible, CollapsibleContent, CollapsibleTrigger } from '@/component/ui/collapsible'
+} from '@/shadcn/ui/sidebar'
+import { Collapsible, CollapsibleContent, CollapsibleTrigger } from '@/shadcn/ui/collapsible'
 import { ChevronRight, Settings2 } from 'lucide-vue-next'
+import type { FunctionalComponent } from 'vue'
+import router from '@/router'
 
 interface Menu {
-  name: string
+  title: string
   url: string
-  icon: string
+  icon: FunctionalComponent
+  items?: SubMenu[]
+  isActive?: boolean
 }
 
-// const menus: Menu[] = [
-//   { name: 'User', icon: 'mdi-account', url: '/user' },
-//   { name: 'Setting', icon: 'mdi-cog', url: '/setting' },
-// ]
-
-const menus = {
-  navMain: [
-    {
-      title: 'Settings',
-      url: '#',
-      icon: Settings2,
-      items: [
-        {
-          title: 'General',
-          url: '#',
-        },
-        {
-          title: 'Team',
-          url: '#',
-        },
-        {
-          title: 'Billing',
-          url: '#',
-        },
-        {
-          title: 'Limits',
-          url: '#',
-        },
-      ],
-    },
-  ],
+interface SubMenu {
+  title: string
+  url: string
 }
+
+const menus: Menu[] = [
+  {
+    title: 'Management',
+    url: '#',
+    icon: Settings2,
+    items: [
+      {
+        title: 'User',
+        url: '/user',
+      },
+      {
+        title: 'Setting',
+        url: '/setting',
+      },
+    ],
+  },
+]
 </script>

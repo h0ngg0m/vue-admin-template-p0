@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import type { HTMLAttributes } from 'vue'
-import { Separator } from '@/component/ui/separator'
+import { Separator } from '@/shadcn/ui/separator'
 import { cn } from '@/util/shadcn'
 
 const props = defineProps<{
@@ -9,10 +9,7 @@ const props = defineProps<{
 </script>
 
 <template>
-  <Separator
-    data-sidebar="separator"
-    :class="cn('mx-2 w-auto bg-sidebar-border', props.class)"
-  >
+  <Separator data-sidebar="separator" :class="cn('mx-2 w-auto bg-sidebar-border', props.class)">
     <slot />
   </Separator>
 </template>
