@@ -25,6 +25,7 @@
       >
         <div class="flex items-center gap-2 px-4">
           <SidebarTrigger class="-ml-1" />
+          <DarkModeToggle />
         </div>
       </header>
       <div class="flex flex-1 flex-col gap-4 p-4 pt-0">
@@ -52,4 +53,5 @@ import {
 import { Separator } from '@/shadcn/ui/separator'
 import SidebarMenus from '@/layout/default/component/SidebarMenus.vue'
 import FooterDropdownMenus from '@/layout/default/component/FooterDropdownMenus.vue'
+import DarkModeToggle from '@/layout/default/component/DarkModeToggle.vue'
 </script>
