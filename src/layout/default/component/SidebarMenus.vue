@@ -71,6 +71,10 @@ const menus: Menu[] = [
     icon: Settings2,
     items: [
       {
+        title: 'Admin',
+        url: '/admin',
+      },
+      {
         title: 'User',
         url: '/user',
       },

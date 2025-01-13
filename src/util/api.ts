@@ -1,6 +1,7 @@
 import axios, { type AxiosInstance, type AxiosResponse } from 'axios'
 import type { ApiResponse } from '@/type/common.ts'
 import { BASE_API_URL } from '@/constant/env.ts'
+import { stringify } from 'qs'
 
 const instance: AxiosInstance = axios.create({
   baseURL: BASE_API_URL,
@@ -47,4 +48,8 @@ export async function patchApi<D, R>(url: string, data: D): Promise<AxiosRespons
 
 export async function deleteApi<R>(url: string): Promise<AxiosResponse<ApiResponse<R>>> {
   return await instance.delete<R, AxiosResponse<ApiResponse<R>>, unknown>(url)
+}
+
+export function stringifyParams(value: unknown): string {
+  return stringify(value, { arrayFormat: 'repeat', skipNulls: true })
 }
