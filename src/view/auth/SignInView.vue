@@ -6,8 +6,8 @@
     </CardHeader>
     <CardContent class="grid gap-4">
       <div class="grid gap-2">
-        <Label for="email">Email</Label>
-        <Input v-model.trim="loginId" id="email" type="text" required @keydown.enter="signIn" />
+        <Label for="loginId">ID</Label>
+        <Input v-model.trim="loginId" id="loginId" type="text" required @keydown.enter="signIn" />
       </div>
       <div class="grid gap-2">
         <Label for="password">Password</Label>
