@@ -59,9 +59,9 @@
             </DropdownMenuItem>
           </DropdownMenuGroup>
           <DropdownMenuSeparator />
-          <DropdownMenuItem>
+          <DropdownMenuItem class="cursor-pointer" @click="signOut">
             <LogOut />
-            Log out
+            Sign out
           </DropdownMenuItem>
         </DropdownMenuContent>
       </DropdownMenu>
@@ -82,6 +82,8 @@ import {
 } from '@/shadcn/ui/dropdown-menu'
 import { SidebarMenu, SidebarMenuButton, SidebarMenuItem } from '@/shadcn/ui/sidebar'
 import { BadgeCheck, Bell, ChevronsUpDown, CreditCard, LogOut, Sparkles } from 'lucide-vue-next'
+import { useAdminStore } from '@/store/adminStore.ts'
+import router from '@/router'
 
 const data = {
   user: {
@@ -89,5 +91,11 @@ const data = {
     email: 'm@example.com',
     avatar: '/avatars/shadcn.jpg',
   },
+}
+
+async function signOut(): Promise<void> {
+  const { clearAdminInfo } = useAdminStore()
+  clearAdminInfo()
+  await router.push('/auth/sign-in')
 }
 </script>
