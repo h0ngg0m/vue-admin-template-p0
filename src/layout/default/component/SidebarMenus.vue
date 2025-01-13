@@ -19,7 +19,11 @@
         </CollapsibleTrigger>
         <CollapsibleContent>
           <SidebarMenuSub>
-            <SidebarMenuSubItem v-for="subItem in item.items" :key="subItem.title">
+            <SidebarMenuSubItem
+              v-for="subItem in item.items"
+              :key="subItem.title"
+              class="cursor-pointer"
+            >
               <SidebarMenuSubButton as-child>
                 <a @click="router.push(subItem.url)">
                   <span>{{ subItem.title }}</span>
