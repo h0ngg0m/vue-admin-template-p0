@@ -1,7 +1,8 @@
-import axios, { type AxiosInstance, type AxiosResponse } from 'axios'
+import axios, { type AxiosInstance } from 'axios'
 import type { ApiResponse } from '@/type/common.ts'
 import { BASE_API_URL } from '@/constant/env.ts'
 import { stringify } from 'qs'
+import { useAdminStore } from '@/store/adminStore.ts'
 
 const instance: AxiosInstance = axios.create({
   baseURL: BASE_API_URL,
@@ -13,7 +14,9 @@ const instance: AxiosInstance = axios.create({
 
 instance.interceptors.request.use(
   async (config) => {
-    // TODO: jwt 전송
+    const { jwt } = useAdminStore()
+    config.headers.Authorization = `Bearer ${jwt.accessToken}`
+
     return config
   },
   async (error) => {
@@ -30,24 +33,24 @@ instance.interceptors.response.use(
   },
 )
 
-export async function getApi<R>(url: string): Promise<AxiosResponse<ApiResponse<R>>> {
-  return await instance.get<R, AxiosResponse<ApiResponse<R>>, unknown>(url)
+export async function getApi<R>(url: string): Promise<ApiResponse<R>> {
+  return await instance.get<R, ApiResponse<R>, unknown>(url)
 }
 
-export async function postApi<D, R>(url: string, data: D): Promise<AxiosResponse<ApiResponse<R>>> {
-  return await instance.post<R, AxiosResponse<ApiResponse<R>>, D>(url, data)
+export async function postApi<D, R>(url: string, data: D): Promise<ApiResponse<R>> {
+  return await instance.post<R, ApiResponse<R>, D>(url, data)
 }
 
-export async function putApi<D, R>(url: string, data: D): Promise<AxiosResponse<ApiResponse<R>>> {
-  return await instance.put<R, AxiosResponse<ApiResponse<R>>, D>(url, data)
+export async function putApi<D, R>(url: string, data: D): Promise<ApiResponse<R>> {
+  return await instance.put<R, ApiResponse<R>, D>(url, data)
 }
 
-export async function patchApi<D, R>(url: string, data: D): Promise<AxiosResponse<ApiResponse<R>>> {
-  return await instance.patch<R, AxiosResponse<ApiResponse<R>>, D>(url, data)
+export async function patchApi<D, R>(url: string, data: D): Promise<ApiResponse<R>> {
+  return await instance.patch<R, ApiResponse<R>, D>(url, data)
 }
 
-export async function deleteApi<R>(url: string): Promise<AxiosResponse<ApiResponse<R>>> {
-  return await instance.delete<R, AxiosResponse<ApiResponse<R>>, unknown>(url)
+export async function deleteApi<R>(url: string): Promise<ApiResponse<R>> {
+  return await instance.delete<R, ApiResponse<R>, unknown>(url)
 }
 
 export function stringifyParams(value: unknown): string {
