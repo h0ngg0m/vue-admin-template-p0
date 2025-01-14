@@ -100,13 +100,7 @@ import {
   DropdownMenuTrigger,
 } from '@/shadcn/ui/dropdown-menu'
 
-import {
-  FlexRender,
-  getCoreRowModel,
-  getSortedRowModel,
-  type PaginationState,
-  useVueTable,
-} from '@tanstack/vue-table'
+import { FlexRender, getCoreRowModel, getSortedRowModel, useVueTable } from '@tanstack/vue-table'
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '@/shadcn/ui/table'
 import { Button } from '@/shadcn/ui/button'
 import { ref, watch } from 'vue'
@@ -115,14 +109,10 @@ import type { Admin } from '@/view/admin/table/type.ts'
 import { getApi, stringifyParams } from '@/util/api.ts'
 import type { ApiResponse, Page } from '@/type/common.ts'
 import { ChevronLeft, ChevronRight, ChevronsLeft, ChevronsRight } from 'lucide-vue-next'
+import { usePagination } from '@/composable/usePagination.ts'
 
 const admins = ref<Admin[]>([])
-const pageCount = ref(0)
-
-const pagination = ref<PaginationState>({
-  pageIndex: 0,
-  pageSize: 2,
-})
+const { pagination, pageCount, handlePaginationChange } = usePagination()
 
 const table = useVueTable({
   get data() {
@@ -131,8 +121,6 @@ const table = useVueTable({
   columns,
   getCoreRowModel: getCoreRowModel(),
   getSortedRowModel: getSortedRowModel(),
-
-  // Pagination
   manualPagination: true,
   get pageCount() {
     return pageCount.value
@@ -141,30 +129,14 @@ const table = useVueTable({
     pagination: pagination.value,
   },
   onPaginationChange: (updater) => {
-    if (typeof updater === 'function') {
-      setPagination(
-        updater({
-          pageIndex: pagination.value.pageIndex,
-          pageSize: pagination.value.pageSize,
-        }),
-      )
-    } else {
-      setPagination(updater)
-    }
+    handlePaginationChange(updater)
   },
 })
-
-function setPagination({ pageIndex, pageSize }: PaginationState): PaginationState {
-  pagination.value.pageIndex = pageIndex
-  pagination.value.pageSize = pageSize
-
-  return { pageIndex, pageSize }
-}
 
 async function getAdmins(): Promise<void> {
   const { data } = await getApi<ApiResponse<Page<Admin>>>(
     `api/v1/admins?${stringifyParams({
-      page: pagination.value.pageIndex,
+      pageIndex: pagination.value.pageIndex,
       pageSize: pagination.value.pageSize,
       sortBy: 'id',
       sortDesc: true,
@@ -173,11 +145,12 @@ async function getAdmins(): Promise<void> {
   pageCount.value = data?.data?.totalPages ?? 0
   admins.value = data?.data?.content ?? []
 }
+
 watch(
-  () => pagination.value.pageIndex,
+  () => pagination.value,
   async () => {
     await getAdmins()
   },
-  { immediate: true },
+  { immediate: true, deep: true },
 )
 </script>
