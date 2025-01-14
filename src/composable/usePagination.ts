@@ -1,7 +1,7 @@
 import type { PaginationState, Updater } from '@tanstack/vue-table'
 import { ref } from 'vue'
 
-export function usePagination(pageIndex = 0, pageSize = 1) {
+export function usePagination(pageIndex = 0, pageSize = 10) {
   const pagination = ref<PaginationState>({
     pageIndex: pageIndex,
     pageSize: pageSize, // items per page
