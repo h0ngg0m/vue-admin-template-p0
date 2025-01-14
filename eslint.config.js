@@ -13,7 +13,7 @@ export default [
   },
   {
     name: 'shadcn',
-    ignores: ['src/shadcn/**'],
+    ignores: ['src/component/shadcn/**'],
   },
   ...pluginVue.configs['flat/essential'],
   ...vueTsEslintConfig(),

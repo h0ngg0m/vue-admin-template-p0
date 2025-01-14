@@ -13,13 +13,13 @@
 </template>
 
 <script setup lang="ts">
-import { Button } from '@/shadcn/ui/button'
+import { Button } from '@/component/shadcn/ui/button'
 import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
   DropdownMenuTrigger,
-} from '@/shadcn/ui/dropdown-menu'
+} from '@/component/shadcn/ui/dropdown-menu'
 import { MoreHorizontal } from 'lucide-vue-next'
 
 defineProps<{

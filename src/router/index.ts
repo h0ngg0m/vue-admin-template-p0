@@ -6,7 +6,7 @@ const router = createRouter({
   routes: [
     {
       path: '/',
-      component: () => import('@/layout/default/DefaultLayout.vue'),
+      component: () => import('@/component/layout/default/DefaultLayout.vue'),
       children: [
         {
           name: 'Home',
@@ -17,7 +17,7 @@ const router = createRouter({
     },
     {
       path: '/auth',
-      component: () => import('@/layout/BlankLayout.vue'),
+      component: () => import('@/component/layout/BlankLayout.vue'),
       children: [
         {
           name: 'SignIn',
@@ -28,7 +28,7 @@ const router = createRouter({
     },
     {
       path: '/admin',
-      component: () => import('@/layout/default/DefaultLayout.vue'),
+      component: () => import('@/component/layout/default/DefaultLayout.vue'),
       children: [
         {
           name: 'Admin',
@@ -39,7 +39,7 @@ const router = createRouter({
     },
     {
       path: '/user',
-      component: () => import('@/layout/default/DefaultLayout.vue'),
+      component: () => import('@/component/layout/default/DefaultLayout.vue'),
       children: [
         {
           name: 'User',
@@ -50,7 +50,7 @@ const router = createRouter({
     },
     {
       path: '/setting',
-      component: () => import('@/layout/default/DefaultLayout.vue'),
+      component: () => import('@/component/layout/default/DefaultLayout.vue'),
       children: [
         {
           name: 'Setting',

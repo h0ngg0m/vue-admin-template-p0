@@ -98,11 +98,18 @@ import {
   DropdownMenuCheckboxItem,
   DropdownMenuContent,
   DropdownMenuTrigger,
-} from '@/shadcn/ui/dropdown-menu'
+} from '@/component/shadcn/ui/dropdown-menu'
 
 import { FlexRender, getCoreRowModel, getSortedRowModel, useVueTable } from '@tanstack/vue-table'
-import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '@/shadcn/ui/table'
-import { Button } from '@/shadcn/ui/button'
+import {
+  Table,
+  TableBody,
+  TableCell,
+  TableHead,
+  TableHeader,
+  TableRow,
+} from '@/component/shadcn/ui/table'
+import { Button } from '@/component/shadcn/ui/button'
 import { ref, watch } from 'vue'
 import { columns } from '@/view/admin/table/columns.ts'
 import type { Admin } from '@/view/admin/table/type.ts'

@@ -27,7 +27,7 @@
 </template>
 
 <script setup lang="ts">
-import { Button } from '@/shadcn/ui/button'
+import { Button } from '@/component/shadcn/ui/button'
 import {
   Card,
   CardContent,
@@ -35,9 +35,9 @@ import {
   CardFooter,
   CardHeader,
   CardTitle,
-} from '@/shadcn/ui/card'
-import { Input } from '@/shadcn/ui/input'
-import { Label } from '@/shadcn/ui/label'
+} from '@/component/shadcn/ui/card'
+import { Input } from '@/component/shadcn/ui/input'
+import { Label } from '@/component/shadcn/ui/label'
 import { computed, ref } from 'vue'
 import axios, { type AxiosResponse } from 'axios'
 import { BASE_API_URL } from '@/constant/env.ts'
