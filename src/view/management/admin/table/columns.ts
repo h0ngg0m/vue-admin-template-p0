@@ -4,6 +4,7 @@ import { Button } from '@/component/shadcn/ui/button'
 import { ArrowUpDown } from 'lucide-vue-next'
 import { h, type VNode } from 'vue'
 import { formatToDateTime } from '@/util/common.ts'
+import DropdownAction from '@/view/management/admin/table/DataTableDropdown.vue'
 
 const ch = createColumnHelper<Admin>()
 
@@ -46,5 +47,12 @@ export const columns = [
   ch.accessor('lastLoginAt', {
     cell: (c) => formatToDateTime(c.getValue()),
     header: ({ column }) => sortingButton('Last Login At', column),
+  }),
+  ch.display({
+    id: 'actions',
+    cell: ({ row }) => {
+      const admin = row.original
+      return h('div', { class: 'relative' }, h(DropdownAction, { admin }))
+    },
   }),
 ]
