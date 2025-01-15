@@ -37,45 +37,11 @@
       </Table>
     </div>
     <div class="flex flex-col">
-      <div class="flex justify-end space-x-2">
-        <span class="text-sm text-muted-foreground mt-1">
-          {{ `${pagination.pageIndex + 1} of ${pageCount}` }}
-        </span>
-      </div>
-      <div class="flex items-center justify-end py-4 space-x-2">
-        <Button
-          variant="outline"
-          size="sm"
-          @click="() => table.setPageIndex(0)"
-          :disabled="!table.getCanPreviousPage()"
-        >
-          <ChevronsLeft />
-        </Button>
-        <Button
-          variant="outline"
-          size="sm"
-          @click="() => table.previousPage()"
-          :disabled="!table.getCanPreviousPage()"
-        >
-          <ChevronLeft />
-        </Button>
-        <Button
-          variant="outline"
-          size="sm"
-          @click="() => table.nextPage()"
-          :disabled="!table.getCanNextPage()"
-        >
-          <ChevronRight />
-        </Button>
-        <Button
-          variant="outline"
-          size="sm"
-          @click="() => table.setPageIndex(table.getPageCount() - 1)"
-          :disabled="!table.getCanNextPage()"
-        >
-          <ChevronsRight />
-        </Button>
-      </div>
+      <DataTablePagination
+        :table="table"
+        :pageIndex="pagination.pageIndex"
+        :pageCount="pageCount"
+      />
     </div>
   </div>
 </template>
@@ -90,15 +56,14 @@ import {
   TableHeader,
   TableRow,
 } from '@/component/shadcn/ui/table'
-import { Button } from '@/component/shadcn/ui/button'
 import { ref, watch } from 'vue'
 import { columns } from '@/view/admin/table/columns.ts'
 import type { Admin } from '@/view/admin/table/type.ts'
 import { getApi, stringifyParams } from '@/util/api.ts'
 import type { ApiResponse, Page } from '@/type/common.ts'
-import { ChevronLeft, ChevronRight, ChevronsLeft, ChevronsRight } from 'lucide-vue-next'
 import { usePagination } from '@/composable/usePagination.ts'
 import DataTableColumnFilter from '@/component/table/tanstack/DataTableColumnFilter.vue'
+import DataTablePagination from '@/component/table/tanstack/DataTablePagination.vue'
 
 const admins = ref<Admin[]>([])
 const { pagination, pageCount, handlePaginationChange } = usePagination()
