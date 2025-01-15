@@ -5,8 +5,8 @@
   "type": "module",
   "scripts": {
     "dev": "vite --port 8082",
-    "build": "run-p type-check \"build-only {@}\" --",
-    "type-check": "vue-tsc --build",
+    "build": "vite build",
+    "test": "eslint . --fix && vue-tsc --noEmit",
     "lint": "eslint . --fix",
     "format": "prettier --write src/"
   },

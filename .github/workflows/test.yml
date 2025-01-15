@@ -1,0 +1,38 @@
+name: test
+on:
+  push:
+    branches: [ '**' ]
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: 📂 checkout
+        uses: actions/checkout@main
+
+      - name: 📦 Install pnpm
+        uses: pnpm/action-setup@master
+        with:
+          version: latest
+          run_install: |
+            - recursive: true
+              args: [--frozen-lockfile, --strict-peer-dependencies]
+
+      - name: 🧪 test
+        run: pnpm test
+
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: 📂 checkout
+        uses: actions/checkout@main
+
+      - name: 📦 Install pnpm
+        uses: pnpm/action-setup@master
+        with:
+          version: latest
+          run_install: |
+            - recursive: true
+              args: [--frozen-lockfile, --strict-peer-dependencies]
+
+      - name: 🏗️ Build
+        run: pnpm build
