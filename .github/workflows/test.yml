@@ -6,7 +6,7 @@ jobs:
   test:
     runs-on: ubuntu-latest
     steps:
-      - name: 📂 checkout
+      - name: 📂 Checkout
         uses: actions/checkout@main
 
       - name: 📦 Install pnpm
@@ -17,13 +17,13 @@ jobs:
             - recursive: true
               args: [--frozen-lockfile, --strict-peer-dependencies]
 
-      - name: 🧪 test
+      - name: 🧪 Run Tests
         run: pnpm test
 
   build:
     runs-on: ubuntu-latest
     steps:
-      - name: 📂 checkout
+      - name: 📂 Checkout
         uses: actions/checkout@main
 
       - name: 📦 Install pnpm
