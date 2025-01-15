@@ -1,26 +1,7 @@
 <template>
   <div>
     <div class="flex items-center py-4">
-      <DropdownMenu>
-        <DropdownMenuTrigger as-child>
-          <Button variant="outline" class="ml-auto"> Columns </Button>
-        </DropdownMenuTrigger>
-        <DropdownMenuContent align="end">
-          <DropdownMenuCheckboxItem
-            v-for="column in table.getAllColumns().filter((c) => c.getCanHide())"
-            :key="column.id"
-            class="capitalize"
-            :checked="column.getIsVisible()"
-            @update:checked="
-              (value) => {
-                column.toggleVisibility(!!value)
-              }
-            "
-          >
-            {{ column.id }}
-          </DropdownMenuCheckboxItem>
-        </DropdownMenuContent>
-      </DropdownMenu>
+      <DataTableColumnFilter :table="table" />
     </div>
     <div class="border rounded-md">
       <Table>
@@ -100,13 +81,6 @@
 </template>
 
 <script setup lang="ts">
-import {
-  DropdownMenu,
-  DropdownMenuCheckboxItem,
-  DropdownMenuContent,
-  DropdownMenuTrigger,
-} from '@/component/shadcn/ui/dropdown-menu'
-
 import { FlexRender, getCoreRowModel, getSortedRowModel, useVueTable } from '@tanstack/vue-table'
 import {
   Table,
@@ -124,6 +98,7 @@ import { getApi, stringifyParams } from '@/util/api.ts'
 import type { ApiResponse, Page } from '@/type/common.ts'
 import { ChevronLeft, ChevronRight, ChevronsLeft, ChevronsRight } from 'lucide-vue-next'
 import { usePagination } from '@/composable/usePagination.ts'
+import DataTableColumnFilter from '@/component/table/tanstack/DataTableColumnFilter.vue'
 
 const admins = ref<Admin[]>([])
 const { pagination, pageCount, handlePaginationChange } = usePagination()
