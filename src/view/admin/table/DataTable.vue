@@ -68,7 +68,7 @@ import DataTablePagination from '@/component/table/tanstack/DataTablePagination.
 const admins = ref<Admin[]>([])
 const { pagination, pageCount, handlePaginationChange } = usePagination()
 
-const table = useVueTable({
+const table = useVueTable<Admin>({
   get data() {
     return admins.value
   },
