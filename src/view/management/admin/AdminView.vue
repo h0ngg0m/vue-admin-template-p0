@@ -5,5 +5,5 @@
 </template>
 
 <script setup lang="ts">
-import DataTable from '@/view/admin/table/DataTable.vue'
+import DataTable from '@/view/management/admin/table/DataTable.vue'
 </script>

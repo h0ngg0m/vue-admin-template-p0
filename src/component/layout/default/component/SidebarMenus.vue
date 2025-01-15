@@ -76,15 +76,15 @@ const menus: Menu[] = [
     items: [
       {
         title: 'Admin',
-        url: '/admin',
+        url: '/management/admin',
       },
       {
         title: 'User',
-        url: '/user',
+        url: '/management/user',
       },
       {
         title: 'Setting',
-        url: '/setting',
+        url: '/management/setting',
       },
     ],
   },

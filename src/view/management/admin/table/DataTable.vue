@@ -57,8 +57,8 @@ import {
   TableRow,
 } from '@/component/shadcn/ui/table'
 import { ref, watch } from 'vue'
-import { columns } from '@/view/admin/table/columns.ts'
-import type { Admin } from '@/view/admin/table/type.ts'
+import { columns } from '@/view/management/admin/table/columns.ts'
+import type { Admin } from '@/view/management/admin/table/type.ts'
 import { getApi, stringifyParams } from '@/util/api.ts'
 import type { ApiResponse, Page } from '@/type'
 import { usePagination } from '@/composable/usePagination.ts'

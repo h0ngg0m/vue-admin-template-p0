@@ -32,8 +32,8 @@ const router = createRouter({
       children: [
         {
           name: 'Admin',
-          path: '/admin',
-          component: () => import('@/view/admin/AdminView.vue'),
+          path: '/management/admin',
+          component: () => import('@/view/management/admin/AdminView.vue'),
         },
       ],
     },
@@ -43,8 +43,8 @@ const router = createRouter({
       children: [
         {
           name: 'User',
-          path: '/user',
-          component: () => import('@/view/user/UserView.vue'),
+          path: '/management/user',
+          component: () => import('@/view/management/user/UserView.vue'),
         },
       ],
     },
@@ -54,8 +54,8 @@ const router = createRouter({
       children: [
         {
           name: 'Setting',
-          path: '/setting',
-          component: () => import('@/view/setting/SettingView.vue'),
+          path: '/management/setting',
+          component: () => import('@/view/management/setting/SettingView.vue'),
         },
       ],
     },
