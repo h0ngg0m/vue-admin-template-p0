@@ -3,6 +3,7 @@ import type { Admin } from '@/view/admin/table/type.ts'
 import { Button } from '@/component/shadcn/ui/button'
 import { ArrowUpDown } from 'lucide-vue-next'
 import { h, type VNode } from 'vue'
+import { formatToDateTime } from '@/util/common.ts'
 
 const ch = createColumnHelper<Admin>()
 
@@ -35,15 +36,15 @@ export const columns = [
     header: ({ column }) => sortingButton('Role', column),
   }),
   ch.accessor('createdAt', {
-    cell: (c) => c.getValue(),
+    cell: (c) => formatToDateTime(c.getValue()),
     header: ({ column }) => sortingButton('Created At', column),
   }),
   ch.accessor('updatedAt', {
-    cell: (c) => c.getValue(),
+    cell: (c) => formatToDateTime(c.getValue()),
     header: ({ column }) => sortingButton('Updated At', column),
   }),
   ch.accessor('lastLoginAt', {
-    cell: (c) => c.getValue(),
+    cell: (c) => formatToDateTime(c.getValue()),
     header: ({ column }) => sortingButton('Last Login At', column),
   }),
 ]
