@@ -3,9 +3,25 @@
     <Sidebar collapsible="icon">
       <SidebarHeader>
         <SidebarMenu>
-          <SidebarMenuItem>
-            <span class="text-xl">Admin</span>
-            <Separator class="mt-2" />
+          <SidebarMenuItem @click="goHome">
+            <DropdownMenu>
+              <DropdownMenuTrigger as-child>
+                <SidebarMenuButton
+                  size="lg"
+                  class="data-[state=open]:bg-sidebar-accent data-[state=open]:text-sidebar-accent-foreground"
+                >
+                  <div
+                    class="flex aspect-square size-8 items-center justify-center rounded-lg bg-sidebar-primary text-sidebar-primary-foreground"
+                  >
+                    <UserCog />
+                  </div>
+                  <div class="grid flex-1 text-left text-sm leading-tight">
+                    <span class="truncate font-semibold">Admin</span>
+                    <span class="truncate text-xs">Template</span>
+                  </div>
+                </SidebarMenuButton>
+              </DropdownMenuTrigger>
+            </DropdownMenu>
           </SidebarMenuItem>
         </SidebarMenu>
       </SidebarHeader>
@@ -45,13 +61,21 @@ import {
   SidebarHeader,
   SidebarInset,
   SidebarMenu,
+  SidebarMenuButton,
   SidebarMenuItem,
   SidebarProvider,
   SidebarRail,
   SidebarTrigger,
 } from '@/component/shadcn/ui/sidebar'
-import { Separator } from '@/component/shadcn/ui/separator'
 import SidebarMenus from '@/component/layout/default/component/SidebarMenus.vue'
 import FooterDropdownMenus from '@/component/layout/default/component/FooterDropdownMenus.vue'
 import DarkModeToggle from '@/component/layout/default/component/DarkModeToggle.vue'
+import { DropdownMenu } from '@/component/shadcn/ui/dropdown-menu'
+import { UserCog } from 'lucide-vue-next'
+import router from '@/router'
+
+async function goHome(): Promise<void> {
+  if (router.currentRoute.value.name === 'Home') return
+  await router.push({ name: 'Home' })
+}
 </script>
