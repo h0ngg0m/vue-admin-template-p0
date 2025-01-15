@@ -1,6 +1,6 @@
 import { jwtDecode } from 'jwt-decode'
 import { defineStore } from 'pinia'
-import type { Jwt } from '@/type/common.ts'
+import type { Jwt } from '@/type'
 import type { TAdminRole } from '@/type/enum.ts'
 import router from '@/router'
 import dayjs from 'dayjs'

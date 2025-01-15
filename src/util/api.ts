@@ -1,5 +1,5 @@
 import axios, { type AxiosInstance } from 'axios'
-import type { ApiResponse } from '@/type/common.ts'
+import type { ApiResponse } from '@/type'
 import { BASE_API_URL } from '@/constant/env.ts'
 import { stringify } from 'qs'
 import { useAdminStore } from '@/store/adminStore.ts'
