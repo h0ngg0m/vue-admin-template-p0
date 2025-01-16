@@ -5,7 +5,9 @@ import { ArrowUpDown } from 'lucide-vue-next'
 import { h, type VNode } from 'vue'
 import { formatToDateTime } from '@/util/common.ts'
 import DataTableDropdown from '@/view/management/admin/table/DataTableDropdown.vue'
+import { useAdminStore } from '@/store/adminStore.ts'
 
+const { details } = useAdminStore()
 const ch = createColumnHelper<Admin>()
 
 function sortingButton(label: string, column: Column<Admin>): VNode {
@@ -52,6 +54,9 @@ export const columns = [
     id: 'actions',
     cell: ({ row }) => {
       const admin = row.original
+      if (admin.id === details.id) {
+        return "It's you!"
+      }
       return h('div', { class: 'relative' }, h(DataTableDropdown, { admin }))
     },
   }),
