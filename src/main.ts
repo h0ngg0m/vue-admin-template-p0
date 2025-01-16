@@ -17,7 +17,7 @@ const app = createApp(App)
 app.use(router)
 app.use(pinia)
 app.use(Vue3Toastify, {
-  position: 'top-left',
+  position: 'top-right',
 } as ToastContainerOptions)
 app.use(LoadingPlugin)
 
