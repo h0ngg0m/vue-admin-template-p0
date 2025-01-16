@@ -1,9 +1,9 @@
 import { jwtDecode } from 'jwt-decode'
 import { defineStore } from 'pinia'
 import type { Jwt } from '@/type'
-import type { TAdminRole } from '@/type/enum.ts'
 import router from '@/router'
 import dayjs from 'dayjs'
+import type { TAdminRole } from '@/view/management/admin/table/type.ts'
 
 interface AdminDetails {
   id: number
@@ -67,16 +67,6 @@ export const useAdminStore = defineStore('admin', {
       } catch (e) {
         console.warn(e)
         return true
-      }
-    },
-    howManySecondsLeft(): number {
-      if (this.isTokenExpired()) return 0
-      try {
-        const decoded = jwtDecode(this.jwt.accessToken)
-        return Math.floor((decoded?.exp ?? 0) - dayjs().unix())
-      } catch (e) {
-        console.warn(e)
-        return 0
       }
     },
   },
