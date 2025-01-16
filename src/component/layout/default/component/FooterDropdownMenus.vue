@@ -8,12 +8,11 @@
             class="data-[state=open]:bg-sidebar-accent data-[state=open]:text-sidebar-accent-foreground"
           >
             <Avatar class="h-8 w-8 rounded-lg">
-              <AvatarImage :src="data.user.avatar" :alt="data.user.name" />
-              <AvatarFallback class="rounded-lg"> CN </AvatarFallback>
+              <SquareUser />
             </Avatar>
             <div class="grid flex-1 text-left text-sm leading-tight">
-              <span class="truncate font-semibold">{{ data.user.name }}</span>
-              <span class="truncate text-xs">{{ data.user.email }}</span>
+              <span class="truncate font-semibold">{{ details.name }}</span>
+              <span class="truncate text-xs">{{ details.loginId }}</span>
             </div>
             <ChevronsUpDown class="ml-auto size-4" />
           </SidebarMenuButton>
@@ -27,37 +26,14 @@
           <DropdownMenuLabel class="p-0 font-normal">
             <div class="flex items-center gap-2 px-1 py-1.5 text-left text-sm">
               <Avatar class="h-8 w-8 rounded-lg">
-                <AvatarImage :src="data.user.avatar" :alt="data.user.name" />
-                <AvatarFallback class="rounded-lg"> CN </AvatarFallback>
+                <SquareUser />
               </Avatar>
               <div class="grid flex-1 text-left text-sm leading-tight">
-                <span class="truncate font-semibold">{{ data.user.name }}</span>
-                <span class="truncate text-xs">{{ data.user.email }}</span>
+                <span class="truncate font-semibold">{{ details.name }}</span>
+                <span class="truncate text-xs">{{ details.loginId }}</span>
               </div>
             </div>
           </DropdownMenuLabel>
-          <DropdownMenuSeparator />
-          <DropdownMenuGroup>
-            <DropdownMenuItem>
-              <Sparkles />
-              Upgrade to Pro
-            </DropdownMenuItem>
-          </DropdownMenuGroup>
-          <DropdownMenuSeparator />
-          <DropdownMenuGroup>
-            <DropdownMenuItem>
-              <BadgeCheck />
-              Account
-            </DropdownMenuItem>
-            <DropdownMenuItem>
-              <CreditCard />
-              Billing
-            </DropdownMenuItem>
-            <DropdownMenuItem>
-              <Bell />
-              Notifications
-            </DropdownMenuItem>
-          </DropdownMenuGroup>
           <DropdownMenuSeparator />
           <DropdownMenuItem class="cursor-pointer" @click="signOut">
             <LogOut />
@@ -70,31 +46,23 @@
 </template>
 
 <script setup lang="ts">
-import { Avatar, AvatarFallback, AvatarImage } from '@/component/shadcn/ui/avatar'
+import { Avatar } from '@/component/shadcn/ui/avatar'
 import {
   DropdownMenu,
   DropdownMenuContent,
-  DropdownMenuGroup,
   DropdownMenuItem,
   DropdownMenuLabel,
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from '@/component/shadcn/ui/dropdown-menu'
 import { SidebarMenu, SidebarMenuButton, SidebarMenuItem } from '@/component/shadcn/ui/sidebar'
-import { BadgeCheck, Bell, ChevronsUpDown, CreditCard, LogOut, Sparkles } from 'lucide-vue-next'
+import { ChevronsUpDown, LogOut, SquareUser } from 'lucide-vue-next'
 import { useAdminStore } from '@/store/adminStore.ts'
 import router from '@/router'
 
-const data = {
-  user: {
-    name: 'shadcn',
-    email: 'm@example.com',
-    avatar: '/avatars/shadcn.jpg',
-  },
-}
+const { details, clearAdminInfo } = useAdminStore()
 
 async function signOut(): Promise<void> {
-  const { clearAdminInfo } = useAdminStore()
   clearAdminInfo()
   await router.push('/auth/sign-in')
 }
