@@ -79,12 +79,8 @@ const menus: Menu[] = [
         url: '/management/admin',
       },
       {
-        title: 'User',
-        url: '/management/user',
-      },
-      {
-        title: 'Setting',
-        url: '/management/setting',
+        title: 'Notice',
+        url: '/management/notice',
       },
     ],
   },

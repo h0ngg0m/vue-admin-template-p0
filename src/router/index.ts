@@ -38,24 +38,13 @@ const router = createRouter({
       ],
     },
     {
-      path: '/user',
+      path: '/notice',
       component: () => import('@/component/layout/default/DefaultLayout.vue'),
       children: [
         {
-          name: 'User',
-          path: '/management/user',
-          component: () => import('@/view/management/user/UserView.vue'),
-        },
-      ],
-    },
-    {
-      path: '/setting',
-      component: () => import('@/component/layout/default/DefaultLayout.vue'),
-      children: [
-        {
-          name: 'Setting',
-          path: '/management/setting',
-          component: () => import('@/view/management/setting/SettingView.vue'),
+          name: 'Notice',
+          path: '/management/notice',
+          component: () => import('@/view/management/notice/NoticeView.vue'),
         },
       ],
     },
