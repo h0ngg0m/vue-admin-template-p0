@@ -1,10 +1,10 @@
-import { createColumnHelper, type Column } from '@tanstack/vue-table'
+import { type Column, createColumnHelper } from '@tanstack/vue-table'
 import type { Admin } from '@/view/management/admin/table/type.ts'
 import { Button } from '@/component/shadcn/ui/button'
 import { ArrowUpDown } from 'lucide-vue-next'
 import { h, type VNode } from 'vue'
 import { formatToDateTime } from '@/util/common.ts'
-import DropdownAction from '@/view/management/admin/table/DataTableDropdown.vue'
+import DataTableDropdown from '@/view/management/admin/table/DataTableDropdown.vue'
 
 const ch = createColumnHelper<Admin>()
 
@@ -52,7 +52,7 @@ export const columns = [
     id: 'actions',
     cell: ({ row }) => {
       const admin = row.original
-      return h('div', { class: 'relative' }, h(DropdownAction, { admin }))
+      return h('div', { class: 'relative' }, h(DataTableDropdown, { admin }))
     },
   }),
 ]

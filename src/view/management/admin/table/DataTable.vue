@@ -60,10 +60,11 @@ import { ref, watch } from 'vue'
 import { columns } from '@/view/management/admin/table/columns.ts'
 import type { Admin } from '@/view/management/admin/table/type.ts'
 import { getApi, stringifyParams } from '@/util/api.ts'
-import type { ApiResponse, Page } from '@/type'
+import type { Page } from '@/type'
 import { usePagination } from '@/composable/usePagination.ts'
 import DataTableColumnFilter from '@/component/table/tanstack/DataTableColumnFilter.vue'
 import DataTablePagination from '@/component/table/tanstack/DataTablePagination.vue'
+import { eventBus } from '@/util/common.ts'
 
 const admins = ref<Admin[]>([])
 const { pagination, pageCount, handlePaginationChange } = usePagination()
@@ -88,7 +89,7 @@ const table = useVueTable<Admin>({
 })
 
 async function getAdmins(): Promise<void> {
-  const { data } = await getApi<ApiResponse<Page<Admin>>>(
+  const { data } = await getApi<Page<Admin>>(
     `api/v1/admins?${stringifyParams({
       pageIndex: pagination.value.pageIndex,
       pageSize: pagination.value.pageSize,
@@ -100,11 +101,7 @@ async function getAdmins(): Promise<void> {
   admins.value = data?.data?.content ?? []
 }
 
-watch(
-  () => pagination.value,
-  async () => {
-    await getAdmins()
-  },
-  { immediate: true, deep: true },
-)
+eventBus.on('admin-deleted', getAdmins)
+
+watch(() => pagination.value, getAdmins, { immediate: true, deep: true })
 </script>
