@@ -14,3 +14,8 @@ export interface Page<T> {
 export interface Jwt {
   accessToken: string
 }
+
+export interface SelectOption {
+  value: string
+  label: string
+}

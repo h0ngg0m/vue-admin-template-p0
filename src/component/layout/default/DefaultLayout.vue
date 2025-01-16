@@ -70,7 +70,7 @@ import {
 import SidebarMenus from '@/component/layout/default/component/SidebarMenus.vue'
 import FooterDropdownMenus from '@/component/layout/default/component/FooterDropdownMenus.vue'
 import DarkModeToggle from '@/component/layout/default/component/DarkModeToggle.vue'
-import { DropdownMenu } from '@/component/shadcn/ui/dropdown-menu'
+import { DropdownMenu, DropdownMenuTrigger } from '@/component/shadcn/ui/dropdown-menu'
 import { UserCog } from 'lucide-vue-next'
 import router from '@/router'
 
