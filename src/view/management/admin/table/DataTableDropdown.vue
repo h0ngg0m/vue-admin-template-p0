@@ -40,7 +40,7 @@ import {
   DropdownMenuTrigger,
 } from '@/component/shadcn/ui/dropdown-menu'
 import { Edit, MoreHorizontal, Trash } from 'lucide-vue-next'
-import { type Admin } from '@/view/management/admin/table/type.ts'
+import { type Admin } from '@/view/management/admin/type.ts'
 import { useConfirmStore } from '@/store/confirmStore.ts'
 import { deleteApi } from '@/util/api.ts'
 import type { ApiResponse } from '@/type'

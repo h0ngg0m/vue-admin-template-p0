@@ -3,7 +3,7 @@ import { defineStore } from 'pinia'
 import type { Jwt } from '@/type'
 import router from '@/router'
 import dayjs from 'dayjs'
-import type { TAdminRole } from '@/view/management/admin/table/type.ts'
+import type { TAdminRole } from '@/view/management/admin/type.ts'
 
 interface AdminDetails {
   id: number

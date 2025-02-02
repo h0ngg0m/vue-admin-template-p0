@@ -3,7 +3,7 @@ import { Button } from '@/component/shadcn/ui/button'
 import { ArrowUpDown } from 'lucide-vue-next'
 import { h, type VNode } from 'vue'
 import { formatToDateTime } from '@/util/common.ts'
-import type { Notice } from '@/view/management/notice/table/type.ts'
+import type { Notice } from '@/view/management/notice/type.ts'
 
 const ch = createColumnHelper<Notice>()
 

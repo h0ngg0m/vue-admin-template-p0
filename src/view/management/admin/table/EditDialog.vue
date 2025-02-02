@@ -59,7 +59,7 @@ import {
 import { Input } from '@/component/shadcn/ui/input'
 import { Label } from '@/component/shadcn/ui/label'
 import { useVModels } from '@vueuse/core'
-import { type Admin, AdminRole, type AdminUpdate } from '@/view/management/admin/table/type.ts'
+import { type Admin, AdminRole, type AdminUpdate } from '@/view/management/admin/type.ts'
 import { computed, onMounted, onUnmounted, ref } from 'vue'
 import { DialogClose } from 'radix-vue'
 import { X } from 'lucide-vue-next'

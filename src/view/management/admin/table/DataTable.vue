@@ -60,7 +60,7 @@ import {
 } from '@/component/shadcn/ui/table'
 import { ref, watch } from 'vue'
 import { columns } from '@/view/management/admin/table/columns.ts'
-import { type Admin, emptyAdmin } from '@/view/management/admin/table/type.ts'
+import { type Admin, emptyAdmin } from '@/view/management/admin/type.ts'
 import { getApi, stringifyParams } from '@/util/api.ts'
 import type { Page } from '@/type'
 import { usePagination } from '@/composable/usePagination.ts'

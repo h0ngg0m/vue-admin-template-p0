@@ -1,5 +1,5 @@
 import mitt, { type Emitter } from 'mitt'
-import type { Admin } from '@/view/management/admin/table/type.ts'
+import type { Admin } from '@/view/management/admin/type.ts'
 
 type AdminEvents = {
   'open-edit-dialog': Admin

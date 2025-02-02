@@ -1,5 +1,5 @@
 import { type Column, createColumnHelper } from '@tanstack/vue-table'
-import { type Admin, AdminRole } from '@/view/management/admin/table/type.ts'
+import { type Admin, AdminRole } from '@/view/management/admin/type.ts'
 import { Button } from '@/component/shadcn/ui/button'
 import { ArrowUpDown } from 'lucide-vue-next'
 import { h, type VNode } from 'vue'
