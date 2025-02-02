@@ -11,6 +11,7 @@
     "format": "prettier --write src/"
   },
   "dependencies": {
+    "@kangc/v-md-editor": "^2.3.18",
     "@tanstack/vue-table": "^8.20.5",
     "@vueuse/core": "^12.3.0",
     "axios": "^1.7.9",

@@ -5,3 +5,8 @@ export interface Notice {
   createdAt: string
   updatedAt: string
 }
+
+export interface AddNotice {
+  title: string
+  content: string
+}

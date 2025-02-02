@@ -46,6 +46,11 @@ const router = createRouter({
           path: '/management/notice',
           component: () => import('@/view/management/notice/NoticeView.vue'),
         },
+        {
+          name: 'Notice Add',
+          path: '/management/notice/add',
+          component: () => import('@/view/management/notice/AddNotice.vue'),
+        },
       ],
     },
     {
