@@ -1,6 +1,9 @@
 <template>
   <div>
-    <div class="flex items-center py-4">
+    <div class="flex py-4">
+      <Button variant="outline" class="mr-2" @click="router.push('/management/notice/add')">
+        Add
+      </Button>
       <DataTableColumnFilter :table="table" />
     </div>
     <div class="border rounded-md">
@@ -62,8 +65,10 @@ import type { Page } from '@/type'
 import { usePagination } from '@/composable/usePagination.ts'
 import DataTableColumnFilter from '@/component/table/tanstack/DataTableColumnFilter.vue'
 import DataTablePagination from '@/component/table/tanstack/DataTablePagination.vue'
-import type { Notice } from '@/view/management/notice/table/type.ts'
+import type { Notice } from '@/view/management/notice/type.ts'
 import { columns } from '@/view/management/notice/table/columns.ts'
+import { Button } from '@/component/shadcn/ui/button'
+import router from '@/router'
 
 const notices = ref<Notice[]>([])
 const { pagination, pageCount, handlePaginationChange } = usePagination()
