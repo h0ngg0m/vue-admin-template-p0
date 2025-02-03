@@ -13,7 +13,7 @@ import { Input } from '@/component/shadcn/ui/input'
 import { postApi } from '@/util/api.ts'
 import type { AddNotice } from '@/view/management/notice/type.ts'
 import router from '@/router'
-import { toastError } from '@/util/toast.ts'
+import { toastError, toastSuccess } from '@/util/toast.ts'
 
 const title = ref('')
 const content = ref('')
@@ -27,6 +27,7 @@ async function add(): Promise<void> {
 
   if (status === 201) {
     await goBack()
+    toastSuccess('Notice added')
   } else {
     toastError('Failed to add a notice')
   }
