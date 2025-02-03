@@ -5,7 +5,11 @@ import { h, type VNode } from 'vue'
 import { formatToDateTime } from '@/util/common.ts'
 import type { Notice } from '@/view/management/notice/type.ts'
 import router from '@/router'
+import { AdminRole } from '@/view/management/admin/type.ts'
+import DataTableDropdown from '@/view/management/notice/table/DataTableDropdown.vue'
+import { useAdminStore } from '@/store/adminStore.ts'
 
+const { details } = useAdminStore()
 const ch = createColumnHelper<Notice>()
 
 function sortingButton(label: string, column: Column<Notice>): VNode {
@@ -21,7 +25,7 @@ function sortingButton(label: string, column: Column<Notice>): VNode {
 
 function goToDetail(id: number, title: string): VNode {
   return h(
-    'div',
+    'span',
     {
       class: 'text-left ml-4 cursor-pointer underline text-blue-400',
       onClick: async () => {
@@ -52,5 +56,15 @@ export const columns = [
   ch.accessor('updatedAt', {
     cell: (c) => formatToDateTime(c.getValue()),
     header: ({ column }) => sortingButton('Updated At', column),
+  }),
+  ch.display({
+    id: 'actions',
+    cell: ({ row }) => {
+      const notice = row.original
+      if (details.role === AdminRole.SUPER) {
+        return h('div', { class: 'relative' }, h(DataTableDropdown, { notice }))
+      }
+      return ''
+    },
   }),
 ]

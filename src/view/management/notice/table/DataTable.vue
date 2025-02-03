@@ -69,6 +69,7 @@ import type { Notice } from '@/view/management/notice/type.ts'
 import { columns } from '@/view/management/notice/table/columns.ts'
 import { Button } from '@/component/shadcn/ui/button'
 import router from '@/router'
+import { noticeEventBus } from '@/view/management/notice/table/event.ts'
 
 const notices = ref<Notice[]>([])
 const { pagination, pageCount, handlePaginationChange } = usePagination()
@@ -104,6 +105,8 @@ async function getNotices(): Promise<void> {
   pageCount.value = data?.data?.totalPages ?? 0
   notices.value = data?.data?.content ?? []
 }
+
+noticeEventBus.on('notice-deleted', getNotices)
 
 watch(() => pagination.value, getNotices, { immediate: true, deep: true })
 </script>
