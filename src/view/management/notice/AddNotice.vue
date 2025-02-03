@@ -1,8 +1,10 @@
 <template>
-  <Input v-model="title" placeholder="Enter a title" class="mb-4" />
-  <MarkdownEditor v-model="content" />
-  <div class="flex justify-start mt-4">
-    <Button variant="outline" :disabled="buttonDisabled" @click="add">Add</Button>
+  <div class="gap-4 p-4 pt-0 h-full">
+    <Input v-model="title" placeholder="Enter a title" class="mb-4" />
+    <MarkdownEditor v-model="content" />
+    <div class="flex justify-start mt-4">
+      <Button variant="outline" :disabled="buttonDisabled" @click="add">Add</Button>
+    </div>
   </div>
 </template>
 <script setup lang="ts">

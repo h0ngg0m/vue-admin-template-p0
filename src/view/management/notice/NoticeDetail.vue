@@ -1,7 +1,9 @@
 <template>
-  <span class="text-sm text-gray-500">{{ title }}</span>
-  <Separator class="mb-4" />
-  <MarkdownPreview :content="content" />
+  <div class="gap-4 p-4 pt-0 h-full">
+    <span class="text-sm text-gray-500">{{ title }}</span>
+    <Separator class="mb-4" />
+    <MarkdownPreview :content="content" />
+  </div>
 </template>
 <script setup lang="ts">
 import { onBeforeMount, ref } from 'vue'
