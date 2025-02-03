@@ -60,6 +60,17 @@ const router = createRouter({
       ],
     },
     {
+      path: '/code',
+      component: () => import('@/component/layout/default/DefaultLayout.vue'),
+      children: [
+        {
+          name: 'Code',
+          path: '/management/code',
+          component: () => import('@/view/management/code/CodeView.vue'),
+        },
+      ],
+    },
+    {
       path: '/:pathMatch(.*)*',
       component: () => import('@/view/error/Error404View.vue'),
     },

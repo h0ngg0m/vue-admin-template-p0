@@ -82,6 +82,10 @@ const menus: Menu[] = [
         title: 'Notice',
         url: '/management/notice',
       },
+      {
+        title: 'Code',
+        url: '/management/code',
+      },
     ],
   },
 ]
