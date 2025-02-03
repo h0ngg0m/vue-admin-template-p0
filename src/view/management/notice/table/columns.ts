@@ -45,10 +45,6 @@ export const columns = [
     cell: (c) => goToDetail(c.row.original.id, c.getValue()),
     header: ({ column }) => sortingButton('Title', column),
   }),
-  ch.accessor('content', {
-    cell: (c) => h('div', { class: 'text-left ml-4' }, c.getValue()),
-    header: ({ column }) => sortingButton('Content', column),
-  }),
   ch.accessor('createdAt', {
     cell: (c) => formatToDateTime(c.getValue()),
     header: ({ column }) => sortingButton('Created At', column),
