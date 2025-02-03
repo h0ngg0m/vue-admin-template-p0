@@ -1,5 +1,9 @@
 <template>
-  <VueMarkdownEditor v-model="value" height="800px" />
+  <VueMarkdownEditor
+    v-model="value"
+    :height="height"
+    left-toolbar="h bold italic strikethrough quote | ul ol table | link image code"
+  />
 </template>
 
 <script setup lang="ts">
@@ -13,9 +17,15 @@ import enUS from '@kangc/v-md-editor/lib/lang/en-US'
 VueMarkdownEditor.lang.use('en-US', enUS)
 VueMarkdownEditor.use(vuepressTheme)
 
-const props = defineProps<{
-  modelValue: string
-}>()
+const props = withDefaults(
+  defineProps<{
+    modelValue: string
+    height?: string
+  }>(),
+  {
+    height: '800px',
+  },
+)
 
 const emit = defineEmits<{
   (e: 'update:modelValue', modelValue: string): void
