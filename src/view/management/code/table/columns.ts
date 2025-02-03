@@ -4,6 +4,7 @@ import { ArrowUpDown } from 'lucide-vue-next'
 import { h, type VNode } from 'vue'
 import { formatToDateTime } from '@/util/common.ts'
 import type { Code } from '@/view/management/code/type.ts'
+import { codeEventBus } from '@/view/management/code/event.ts'
 
 const ch = createColumnHelper<Code>()
 
@@ -18,6 +19,21 @@ function sortingButton(label: string, column: Column<Code>): VNode {
   )
 }
 
+function openEdit(code: Code): VNode {
+  return h(
+    'span',
+    {
+      class: 'text-left ml-4 cursor-pointer underline text-blue-400',
+      onClick: () => openEditEvent(code),
+    },
+    code.title,
+  )
+}
+
+function openEditEvent(code: Code): void {
+  codeEventBus.emit('open-edit-code', code)
+}
+
 export const columns = [
   ch.accessor('id', {
     cell: (c) => h('div', { class: 'text-left ml-4' }, c.getValue()),
@@ -28,7 +44,7 @@ export const columns = [
     header: ({ column }) => sortingButton('Group', column),
   }),
   ch.accessor('title', {
-    cell: (c) => h('div', { class: 'text-left ml-4' }, c.getValue()),
+    cell: (c) => openEdit(c.row.original),
     header: ({ column }) => sortingButton('Title', column),
   }),
   ch.accessor('value', {

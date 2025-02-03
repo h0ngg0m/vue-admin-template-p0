@@ -13,3 +13,23 @@ export interface CodeGroup {
   createdAt: string
   updatedAt: string
 }
+
+export function emptyCode(): Code {
+  return {
+    id: 0,
+    title: '',
+    value: '',
+    createdAt: '',
+    updatedAt: '',
+    codeGroup: emptyCodeGroup(),
+  }
+}
+
+export function emptyCodeGroup(): CodeGroup {
+  return {
+    id: 0,
+    title: '',
+    createdAt: '',
+    updatedAt: '',
+  }
+}
