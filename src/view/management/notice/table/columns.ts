@@ -4,6 +4,7 @@ import { ArrowUpDown } from 'lucide-vue-next'
 import { h, type VNode } from 'vue'
 import { formatToDateTime } from '@/util/common.ts'
 import type { Notice } from '@/view/management/notice/type.ts'
+import router from '@/router'
 
 const ch = createColumnHelper<Notice>()
 
@@ -18,13 +19,26 @@ function sortingButton(label: string, column: Column<Notice>): VNode {
   )
 }
 
+function goToDetail(id: number, title: string): VNode {
+  return h(
+    'div',
+    {
+      class: 'text-left ml-4 cursor-pointer underline text-blue-400',
+      onClick: async () => {
+        await router.push({ name: 'Notice Detail', params: { id: id } })
+      },
+    },
+    title,
+  )
+}
+
 export const columns = [
   ch.accessor('id', {
     cell: (c) => h('div', { class: 'text-left ml-4' }, c.getValue()),
     header: ({ column }) => sortingButton('ID', column),
   }),
   ch.accessor('title', {
-    cell: (c) => h('div', { class: 'text-left ml-4' }, c.getValue()),
+    cell: (c) => goToDetail(c.row.original.id, c.getValue()),
     header: ({ column }) => sortingButton('Title', column),
   }),
   ch.accessor('content', {
