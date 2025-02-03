@@ -1,16 +1,24 @@
 <template>
-  <div class="flex gap-4 p-4 pt-0 h-full">
-    <div>
-      <DataTable />
-    </div>
-    <div>
-      <Separator orientation="vertical" />
-    </div>
-    <div>do something</div>
-  </div>
+  <ResizablePanelGroup id="handle-demo-group-1" direction="horizontal" class="h-full w-full">
+    <ResizablePanel id="handle-demo-panel-1" :default-size="40">
+      <div class="flex h-full p-6">
+        <DataTable />
+      </div>
+    </ResizablePanel>
+    <ResizableHandle id="handle-demo-handle-1" with-handle />
+    <ResizablePanel id="handle-demo-panel-2" :default-size="60">
+      <div class="flex h-full p-6">
+        <div>do something</div>
+      </div>
+    </ResizablePanel>
+  </ResizablePanelGroup>
 </template>
 
 <script setup lang="ts">
 import DataTable from '@/view/management/code/table/DataTable.vue'
-import { Separator } from '@/component/shadcn/ui/separator'
+import {
+  ResizableHandle,
+  ResizablePanel,
+  ResizablePanelGroup,
+} from '@/component/shadcn/ui/resizable'
 </script>
