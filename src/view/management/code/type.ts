@@ -14,6 +14,12 @@ export interface CodeGroup {
   updatedAt: string
 }
 
+export interface UpdateCode {
+  title: string
+  value: string
+  codeGroupId: number
+}
+
 export function emptyCode(): Code {
   return {
     id: 0,
