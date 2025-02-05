@@ -37,7 +37,7 @@
     "@iconify-json/radix-icons": "^1.2.2",
     "@iconify/vue": "^4.3.0",
     "@tsconfig/node22": "^22.0.0",
-    "@types/node": "^22.13.0",
+    "@types/node": "^22.13.1",
     "@types/qs": "^6.9.18",
     "@vitejs/plugin-vue": "^5.2.1",
     "@vue/eslint-config-prettier": "^10.2.0",
