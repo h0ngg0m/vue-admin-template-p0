@@ -64,6 +64,7 @@ import DataTableColumnFilter from '@/component/table/tanstack/DataTableColumnFil
 import DataTablePagination from '@/component/table/tanstack/DataTablePagination.vue'
 import { columns } from '@/view/management/code/table/columns.ts'
 import type { Code } from '@/view/management/code/type.ts'
+import { codeEventBus } from '@/view/management/code/event.ts'
 
 const codes = ref<Code[]>([])
 const { pagination, pageCount, handlePaginationChange } = usePagination()
@@ -99,6 +100,8 @@ async function getCodes(): Promise<void> {
   pageCount.value = data?.data?.totalPages ?? 0
   codes.value = data?.data?.content ?? []
 }
+
+codeEventBus.on('code-updated', getCodes)
 
 watch(() => pagination.value, getCodes, { immediate: true, deep: true })
 </script>

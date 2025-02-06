@@ -8,7 +8,7 @@
     <ResizableHandle id="handle-demo-handle-1" with-handle />
     <ResizablePanel id="handle-demo-panel-2" :default-size="60">
       <div class="flex p-6">
-        <EditCode v-if="show" v-model="codeToEdit" />
+        <EditCode v-if="show" :code="codeToEdit" />
       </div>
     </ResizablePanel>
   </ResizablePanelGroup>
