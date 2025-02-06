@@ -1,9 +1,9 @@
 <template>
   <Dialog :open="show">
-    <DialogContent class="sm:max-w-[425px]">
+    <DialogContent>
       <DialogHeader>
-        <DialogTitle>Edit admin</DialogTitle>
-        <DialogDescription> Edit the admin's information. </DialogDescription>
+        <DialogTitle>Update admin</DialogTitle>
+        <DialogDescription> Update the admin's information. </DialogDescription>
       </DialogHeader>
       <div class="grid gap-4 py-4">
         <div class="grid grid-cols-4 items-center gap-4">
@@ -34,7 +34,7 @@
         </div>
       </div>
       <DialogFooter>
-        <Button :disabled="!editable" @click="save"> Save changes </Button>
+        <Button :disabled="!updatable" @click="update"> Update </Button>
       </DialogFooter>
       <DialogClose
         @click="show = false"
@@ -80,12 +80,12 @@ const emits = defineEmits<{
 }>()
 
 const { show, admin } = useVModels(props, emits)
-const editable = computed(
+const updatable = computed(
   () => admin.value.id && admin.value.loginId && admin.value.name && admin.value.role,
 )
 const newPassword = ref('')
 
-async function save(): Promise<void> {
+async function update(): Promise<void> {
   const response = await putApi<AdminUpdate, void>(`api/v1/admins/${admin.value.id}`, {
     name: admin.value.name,
     role: admin.value.role,

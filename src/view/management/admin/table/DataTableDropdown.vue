@@ -6,9 +6,9 @@
       </Button>
     </DropdownMenuTrigger>
     <DropdownMenuContent align="end">
-      <DropdownMenuItem @click="openEditDialog(admin)">
+      <DropdownMenuItem @click="openUpdateDialog(admin)">
         <Edit />
-        Edit
+        Update
       </DropdownMenuItem>
       <DropdownMenuItem
         @click="
@@ -53,8 +53,8 @@ defineProps<{
   admin: Admin
 }>()
 
-function openEditDialog(admin: Admin) {
-  adminEventBus.emit('open-edit-dialog', admin)
+function openUpdateDialog(admin: Admin) {
+  adminEventBus.emit('open-update-dialog', admin)
 }
 
 async function deleteAdmin(admin: Admin): Promise<void> {

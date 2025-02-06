@@ -8,7 +8,7 @@
     <ResizableHandle id="handle-demo-handle-1" with-handle />
     <ResizablePanel id="handle-demo-panel-2" :default-size="60">
       <div class="flex p-6">
-        <EditCode v-if="show" :code="codeToEdit" />
+        <CodeUpdate v-if="show" :code="codeToUpdate" />
       </div>
     </ResizablePanel>
   </ResizablePanelGroup>
@@ -21,16 +21,16 @@ import {
   ResizablePanel,
   ResizablePanelGroup,
 } from '@/component/shadcn/ui/resizable'
-import EditCode from '@/view/management/code/table/EditCode.vue'
+import CodeUpdate from '@/view/management/code/table/CodeUpdate.vue'
 import { codeEventBus } from '@/view/management/code/event.ts'
 import { ref } from 'vue'
 import { type Code, emptyCode } from '@/view/management/code/type.ts'
 
-const codeToEdit = ref<Code>(emptyCode())
+const codeToUpdate = ref<Code>(emptyCode())
 const show = ref(false)
 
-codeEventBus.on('open-edit-code', (code) => {
+codeEventBus.on('open-code-update', (code) => {
   show.value = true
-  codeToEdit.value = code
+  codeToUpdate.value = code
 })
 </script>

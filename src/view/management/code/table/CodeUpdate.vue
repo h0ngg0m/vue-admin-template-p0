@@ -5,10 +5,10 @@
       <Input v-model="id" id="id" class="col-span-3 bg-gray-200" readonly />
     </div>
     <div class="grid grid-cols-4 items-center gap-4">
-      <Label for="role" class="text-left"> Group </Label>
+      <Label for="group" class="text-left"> Group </Label>
       <Select
         v-model="codeGroupId"
-        id="role"
+        id="group"
         placeholder="Select a Group"
         clazz="col-span-3"
         :options="codeGroups.map((cg) => ({ value: cg.id.toString(), label: cg.title }))"
@@ -23,7 +23,7 @@
       <Input v-model="value" id="value" class="col-span-3" />
     </div>
     <div class="grid items-end gap-4">
-      <Button @click="save" :disabled="saveDisabled">Save</Button>
+      <Button @click="update" :disabled="!updatable">Update</Button>
     </div>
   </div>
 </template>
@@ -62,11 +62,11 @@ const codeGroups = computedAsync<CodeGroup[]>(async () => {
   return data.data?.content ?? []
 }, [])
 
-const saveDisabled = computed(() => {
-  return !id.value || !title.value || !value.value || !codeGroupId.value
+const updatable = computed(() => {
+  return id.value && title.value && value.value && codeGroupId.value
 })
 
-async function save(): Promise<void> {
+async function update(): Promise<void> {
   const { status } = await putApi<UpdateCode, Code>(`api/v1/codes/${id.value}`, {
     title: title.value,
     value: value.value,

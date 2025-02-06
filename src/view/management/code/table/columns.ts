@@ -19,19 +19,19 @@ function sortingButton(label: string, column: Column<Code>): VNode {
   )
 }
 
-function openEdit(code: Code): VNode {
+function openCodeUpdate(code: Code): VNode {
   return h(
     'span',
     {
       class: 'text-left ml-4 cursor-pointer underline text-blue-400',
-      onClick: () => openEditEvent(code),
+      onClick: () => openCodeUpdateEvent(code),
     },
     code.title,
   )
 }
 
-function openEditEvent(code: Code): void {
-  codeEventBus.emit('open-edit-code', code)
+function openCodeUpdateEvent(code: Code): void {
+  codeEventBus.emit('open-code-update', code)
 }
 
 export const columns = [
@@ -44,7 +44,7 @@ export const columns = [
     header: ({ column }) => sortingButton('Group', column),
   }),
   ch.accessor('title', {
-    cell: (c) => openEdit(c.row.original),
+    cell: (c) => openCodeUpdate(c.row.original),
     header: ({ column }) => sortingButton('Title', column),
   }),
   ch.accessor('value', {

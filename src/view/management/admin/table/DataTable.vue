@@ -45,7 +45,7 @@
     </div>
   </div>
 
-  <EditDialog v-model:show="showEditDialog" v-model:admin="adminToEdit" />
+  <AdminUpdateDialog v-model:show="showUpdateDialog" v-model:admin="adminToUpdate" />
 </template>
 
 <script setup lang="ts">
@@ -67,7 +67,7 @@ import { usePagination } from '@/composable/usePagination.ts'
 import DataTableColumnFilter from '@/component/table/tanstack/DataTableColumnFilter.vue'
 import DataTablePagination from '@/component/table/tanstack/DataTablePagination.vue'
 import { adminEventBus } from '@/view/management/admin/table/event.ts'
-import EditDialog from '@/view/management/admin/table/EditDialog.vue'
+import AdminUpdateDialog from '@/view/management/admin/table/AdminUpdateDialog.vue'
 
 const admins = ref<Admin[]>([])
 const { pagination, pageCount, handlePaginationChange } = usePagination()
@@ -107,11 +107,11 @@ async function getAdmins(): Promise<void> {
 adminEventBus.on('admin-deleted', getAdmins)
 adminEventBus.on('admin-updated', getAdmins)
 
-const showEditDialog = ref(false)
-const adminToEdit = ref<Admin>(emptyAdmin())
-adminEventBus.on('open-edit-dialog', (admin) => {
-  showEditDialog.value = true
-  adminToEdit.value = admin
+const showUpdateDialog = ref(false)
+const adminToUpdate = ref<Admin>(emptyAdmin())
+adminEventBus.on('open-update-dialog', (admin) => {
+  showUpdateDialog.value = true
+  adminToUpdate.value = admin
 })
 
 watch(() => pagination.value, getAdmins, { immediate: true, deep: true })
