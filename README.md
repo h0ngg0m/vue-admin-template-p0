@@ -1,6 +1,8 @@
-# admin-web-template
+# vue-admin-template-p0
 
-### TODO
-- Notice (Markdown Editor)
-- Popup
-- Code
+## Stack
+- Vue.js
+- TypeScript
+- Vite
+- Tailwind CSS
+- shadcn/ui

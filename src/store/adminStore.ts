@@ -17,7 +17,7 @@ interface AdminInfo {
   details: AdminDetails
 }
 
-const ACCESS_TOKEN_KEY = 'admin-web-template-access-token'
+const ACCESS_TOKEN_KEY = 'vue-admin-template-p0-access-token'
 
 export const useAdminStore = defineStore('admin', {
   state: (): AdminInfo => ({
