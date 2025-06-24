@@ -6,3 +6,4 @@
 - Vite
 - Tailwind CSS
 - shadcn/ui
+- tanstack/vue-table
